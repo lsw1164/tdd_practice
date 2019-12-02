@@ -11,7 +11,16 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testMultipication() {
+        var five:Dollar = Dollar(5)
+        assertEquals(Dollar(10), five.times(2))
+        assertEquals(Dollar(15), five.times(3))
+    }
+
+    @Test
+    fun testEquality() {
+        assertTrue(Dollar(5).equals(Dollar(5)))
+
     }
 }
+

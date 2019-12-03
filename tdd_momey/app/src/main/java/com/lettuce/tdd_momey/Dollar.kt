@@ -5,7 +5,7 @@ import android.text.method.MovementMethod
 class Dollar : Money {
     constructor(_amount: Int) : super(_amount)
 
-    fun times(multiplier : Int) : Dollar {
+    override fun times(multiplier: Int) : Dollar {
         return Dollar(this.amount * multiplier)
     }
     override fun equals(other: Any?) : Boolean {

@@ -1,20 +1,18 @@
 package com.lettuce.tdd_momey
 
-class Dollar {
+import android.text.method.MovementMethod
 
-    private var amount: Int
-    constructor(_amount: Int) {
-        this.amount = _amount
-    }
+class Dollar : Money {
+    constructor(_amount: Int) : super(_amount)
+
     fun times(multiplier : Int) : Dollar {
         return Dollar(this.amount * multiplier)
     }
-
     override fun equals(other: Any?) : Boolean {
-        if(other == null || other !is Dollar)
+        if(other == null || other !is Dollar) {
             return false
-
-        return this.amount == other.amount
+        }
+        return other.amount == this.amount
     }
 }
 

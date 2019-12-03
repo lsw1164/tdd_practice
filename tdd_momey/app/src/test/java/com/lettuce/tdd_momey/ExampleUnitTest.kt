@@ -20,7 +20,13 @@ class ExampleUnitTest {
     @Test
     fun testEquality() {
         assertTrue(Dollar(5).equals(Dollar(5)))
+    }
 
+    @Test
+    fun testFrancMultipication() {
+        var five: Franc = Franc(5)
+        assertEquals(Franc(10), five.times(2))
+        assertEquals(Franc(15), five.times(2))
     }
 }
 

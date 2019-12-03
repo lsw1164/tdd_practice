@@ -1,8 +1,8 @@
 package com.lettuce.tdd_momey
 
-open class Dollar {
+class Dollar {
 
-    var amount: Int
+    private var amount: Int
     constructor(_amount: Int) {
         this.amount = _amount
     }

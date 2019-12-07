@@ -1,6 +1,6 @@
 package com.lettuce.tdd_momey
 
-open abstract class Money {
+open class Money {
     protected var amount: Int
     protected var currency: String
 
@@ -9,9 +9,23 @@ open abstract class Money {
         this.currency = _currcnty
     }
 
-    abstract fun times(multiplier: Int): Money
-    fun currency(): String{
+    open fun times(multiplier: Int): Money? {
+        return Money(this.amount * multiplier, this.currency)
+    }
+
+    override fun toString(): String {
+        return this.amount.toString() + " " + this.currency
+    }
+
+    fun currency(): String {
         return this.currency
+    }
+
+    override fun equals(other: Any?): Boolean {
+        var otherMoney: Money? = other as? Money
+        if(otherMoney == null) return false
+        return (this.amount == otherMoney.amount
+                && this.currency() == otherMoney.currency())
     }
 
     //static method

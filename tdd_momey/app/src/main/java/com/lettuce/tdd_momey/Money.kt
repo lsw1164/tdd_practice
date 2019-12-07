@@ -13,6 +13,10 @@ class Money: Expression {
         return this.amount.toString() + " " + this.currency
     }
 
+    override fun reduce(to: String): Money {
+        return this
+    }
+
     fun times(multiplier: Int): Money? {
         return Money(this.amount * multiplier, this.currency)
     }
@@ -29,7 +33,7 @@ class Money: Expression {
     }
 
     fun plus(addend: Money): Expression {
-        return Money(this.amount + addend.amount, this.currency)
+        return Sum(this, addend)
     }
 
     //static method

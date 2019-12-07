@@ -47,5 +47,29 @@ class ExampleUnitTest {
         assertEquals(Money.dollar(10), reduced)
     }
 
+    @Test
+    fun testPlusReturnsSum() {
+        var five: Money = Money.dollar(5)
+        var result: Expression = five.plus(five)
+        var sum: Sum? = result as? Sum
+        assertEquals(five, sum?.addend)
+        assertEquals(five, sum?.augend)
+    }
+
+    @Test
+    fun testReduceSum() {
+        var sum: Expression = Sum(Money.dollar(3), Money.dollar(4))
+        var bank: Bank = Bank()
+        var result = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(7), result)
+    }
+
+    @Test
+    fun testReduceMoney() {
+        var bank: Bank = Bank()
+        var result: Money = bank.reduce(Money.dollar(1), "USD")
+        assertEquals(Money.dollar(1), result)
+    }
+
 }
 

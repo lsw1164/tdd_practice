@@ -1,20 +1,20 @@
 package com.lettuce.tdd_momey
 
-open class Money {
-    protected var amount: Int
-    protected var currency: String
+class Money {
+    var amount: Int
+    var currency: String
 
     constructor(_amount: Int, _currcnty:String) {
         this.amount = _amount
         this.currency = _currcnty
     }
 
-    open fun times(multiplier: Int): Money? {
-        return Money(this.amount * multiplier, this.currency)
-    }
-
     override fun toString(): String {
         return this.amount.toString() + " " + this.currency
+    }
+
+    fun times(multiplier: Int): Money? {
+        return Money(this.amount * multiplier, this.currency)
     }
 
     fun currency(): String {
@@ -30,11 +30,11 @@ open class Money {
 
     //static method
     companion object {
-        @JvmStatic fun dollar(_amount: Int): Dollar {
-            return Dollar(_amount, "USD")
+        @JvmStatic fun dollar(_amount: Int): Money {
+            return Money(_amount, "USD")
         }
-        @JvmStatic fun franc(_amount: Int): Franc {
-            return Franc(_amount, "CHF")
+        @JvmStatic fun franc(_amount: Int): Money{
+            return Money(_amount, "CHF")
         }
     }
 

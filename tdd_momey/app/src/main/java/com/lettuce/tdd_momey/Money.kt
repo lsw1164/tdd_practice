@@ -1,6 +1,6 @@
 package com.lettuce.tdd_momey
 
-class Money {
+class Money: Expression {
     var amount: Int
     var currency: String
 
@@ -26,6 +26,10 @@ class Money {
         if(otherMoney == null) return false
         return (this.amount == otherMoney.amount
                 && this.currency() == otherMoney.currency())
+    }
+
+    fun plus(addend: Money): Expression {
+        return Money(this.amount + addend.amount, this.currency)
     }
 
     //static method

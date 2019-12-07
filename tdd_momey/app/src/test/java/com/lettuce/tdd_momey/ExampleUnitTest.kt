@@ -10,6 +10,7 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
     @Test
     fun testMultipication() {
         var five: Money = Money.dollar(5)
@@ -35,6 +36,15 @@ class ExampleUnitTest {
     fun testCurrency() {
         assertEquals("USD", Money.dollar(1).currency())
         assertEquals("CHF", Money.franc(1).currency())
+    }
+
+    @Test
+    fun testSimpleAddition() {
+        var five: Money = Money.dollar(5)
+        var sum: Expression = five.plus(five)
+        var bank: Bank = Bank()
+        var reduced: Money = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(10), reduced)
     }
 
 }

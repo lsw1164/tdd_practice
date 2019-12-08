@@ -13,8 +13,9 @@ class Money: Expression {
         return this.amount.toString() + " " + this.currency
     }
 
-    override fun reduce(to: String): Money {
-        return this
+    override fun reduce(bank: Bank, to: String): Money {
+        var rate: Int = bank.rate(this.currency, to)
+        return Money(this.amount/rate, to)
     }
 
     fun times(multiplier: Int): Money? {

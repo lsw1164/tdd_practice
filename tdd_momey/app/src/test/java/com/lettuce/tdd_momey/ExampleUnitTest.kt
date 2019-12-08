@@ -71,5 +71,18 @@ class ExampleUnitTest {
         assertEquals(Money.dollar(1), result)
     }
 
+    @Test
+    fun testReduceMoneyDifferentCurrency() {
+        var bank: Bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        var result: Money = bank.reduce(Money.franc(2), "USD")
+        assertEquals(Money.dollar(1), result)
+    }
+
+    @Test
+    fun testIdentityRate() {
+        assertEquals(1, Bank().rate("USD", "USD"))
+    }
+
 }
 

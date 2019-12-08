@@ -9,7 +9,7 @@ class Sum : Expression {
         this.addend = _addend
     }
 
-    override fun reduce(to: String): Money {
+    override fun reduce(bank: Bank, to: String): Money {
         var amount: Int = augend.amount + addend.amount
         return Money(amount, to)
     }

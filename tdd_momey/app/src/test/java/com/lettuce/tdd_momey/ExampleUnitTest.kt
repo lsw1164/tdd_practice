@@ -84,5 +84,15 @@ class ExampleUnitTest {
         assertEquals(1, Bank().rate("USD", "USD"))
     }
 
+    @Test
+    fun testMixedAddition() {
+        var fiveBucks: Expression = Money.dollar(5)
+        var tenFrancs: Expression = Money.franc(10)
+        var bank: Bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        var result: Money = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
+        assertEquals(Money.dollar(10), result)
+    }
+
 }
 

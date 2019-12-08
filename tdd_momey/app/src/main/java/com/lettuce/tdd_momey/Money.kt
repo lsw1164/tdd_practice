@@ -18,7 +18,7 @@ class Money: Expression {
         return Money(this.amount/rate, to)
     }
 
-    fun times(multiplier: Int): Money? {
+    fun times(multiplier: Int): Expression {
         return Money(this.amount * multiplier, this.currency)
     }
 
@@ -33,7 +33,7 @@ class Money: Expression {
                 && this.currency() == otherMoney.currency())
     }
 
-    fun plus(addend: Money): Expression {
+    override fun plus(addend: Expression): Expression {
         return Sum(this, addend)
     }
 

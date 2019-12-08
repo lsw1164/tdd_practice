@@ -18,7 +18,7 @@ class Money: Expression {
         return Money(this.amount/rate, to)
     }
 
-    fun times(multiplier: Int): Expression {
+    override fun times(multiplier: Int): Expression {
         return Money(this.amount * multiplier, this.currency)
     }
 

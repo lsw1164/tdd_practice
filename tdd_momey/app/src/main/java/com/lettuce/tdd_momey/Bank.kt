@@ -1,7 +1,5 @@
 package com.lettuce.tdd_momey
 
-import kotlin.math.absoluteValue
-
 class Bank {
     private var rates: HashMap<Pair, Int?> = HashMap()
 

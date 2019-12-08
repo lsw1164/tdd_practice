@@ -1,7 +1,6 @@
 package com.lettuce.tdd_momey
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**
@@ -92,6 +91,28 @@ class ExampleUnitTest {
         bank.addRate("CHF", "USD", 2)
         var result: Money = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
         assertEquals(Money.dollar(10), result)
+    }
+
+    @Test
+    fun testSumPlusMoney() {
+        var fiveBucks: Expression = Money.dollar(5)
+        var tenFrancs: Expression = Money.franc(10)
+        var bank: Bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        var sum: Expression = Sum(fiveBucks, tenFrancs).plus(fiveBucks)
+        var result: Money = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(15), result)
+    }
+
+    @Test
+    fun testSumTimes() {
+        var fiveBucks: Expression = Money.dollar(5)
+        var tenFrancs: Expression = Money.franc(10)
+        var bank: Bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        var sum: Expression = Sum(fiveBucks, tenFrancs).times(2)
+        var result: Money = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(20), result)
     }
 
 }

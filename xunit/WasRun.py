@@ -10,6 +10,6 @@ class WasRun(TestCase):
         print("WasRun.testMethod::")
         self.wasRun=1
 
-    def run(self):
-        print("WasRun.run::")
-        self.testMethod()
+    def setUp(self):
+        self.wasRun=None
+        self.wasSetUp=1
